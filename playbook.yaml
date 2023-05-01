@@ -1,0 +1,8 @@
+---
+- hosts:
+    - docker
+  remote_user: eng
+  become: true
+  connection: ssh
+  roles:
+    - docker
