@@ -22,7 +22,7 @@
 
 - name: check directory
   stat:
-    path: "{{docker_install_os_config.docker_binaries}}" 
+    path: "{{docker_install_os_config.docker_binaries}}"
   register: st
 
 - name: assert that directory is created
@@ -59,6 +59,12 @@
 - name: just force systemd to reload configs
   systemd:
     daemon_reload: yes
+
+- name: start docker service
+  service:
+    name: docker.socket
+    enabled: yes
+    state: started
 
 - name: copy docker compose
   copy:
