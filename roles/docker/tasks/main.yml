@@ -60,11 +60,8 @@
   systemd:
     daemon_reload: yes
 
-- name: start docker service
-  service:
-    name: docker.socket
-    enabled: yes
-    state: started
+- name: run dockerd
+  shell: nohup /usr/bin/dockerd &
 
 - name: copy docker compose
   copy:
